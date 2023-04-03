@@ -1,10 +1,22 @@
 #pragma once
 
 #include <stddef.h>
+#include "../board/board.hpp"
+
+class Board;
 
 enum Color {
     White = 0,
     Black
+};
+
+enum PieceType {
+    KING = 0,
+    QUEEN,
+    ROOK,
+    KNIGHT,
+    BISHOP,
+    PAWN
 };
 
 struct Coordinates {
@@ -33,8 +45,15 @@ class BasePiece {
         */
         inline bool isTaken() { return this->taken; };
 
+        /**
+         * Returns type of the piece
+         * @return PieceType
+        */
+        inline PieceType getType() { return this->type; };
+
     private:
         Color color             { White };  // Piece's color
         bool taken              { false };  // True is piece has been taken by enemy
         Coordinates coordinates { 0, 0 };   // Coordinates on the board
+        PieceType type;                     // Type of current piece
 };

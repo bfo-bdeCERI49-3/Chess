@@ -2,6 +2,11 @@
 
 #include "../pieces/BasePiece.hpp"
 
+enum Color;
+enum PieceType;
+struct Coordinates;
+class BasePiece;
+
 class Move {
     public:
         Coordinates originCoordinates;      // Starting position of the move
@@ -18,17 +23,22 @@ class Board {
         /**
          * Grid representing all available moves for White player
         */
-       Move* whiteAvailableMoves { nullptr };
+        Move* whiteAvailableMoves { nullptr };
 
-       /**
-        * Grid representing all available moves for Black player
-       */
+        /**
+         * Grid representing all available moves for Black player
+        */
         Move* blackAvailableMoves { nullptr };
 
         /**
          * 0 if white player's turn, 1 if black player's turn
         */
         unsigned char playerTurn { 0 };
+
+        /**
+         * Pieces on the Checker
+        */
+        BasePiece* pieces[32] { nullptr };
 
     public:
         /**
@@ -59,4 +69,11 @@ class Board {
          * @return unsigned char
         */
         inline unsigned char getTurn() { return this->playerTurn; };
+
+        /**
+         * Move piece from one place to another
+         * @param Move - Move to make
+         * @return
+        */
+        void movePiece(Move& move);
 };
