@@ -37,3 +37,14 @@ Board::Board() {
     for(int i = 0; i < 8; i++)
         this->grid[1][i] = new Pawn(White, 6, i, PAWN);
 };
+
+/**
+ * Destructor
+*/
+Board::~Board() {
+    delete[] pieces;
+    delete[] whiteAvailableMoves;
+    delete[] grid;
+    delete[] blackAvailableMoves;
+    delete[] whiteAvailableMoves;
+};

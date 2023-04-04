@@ -47,6 +47,11 @@ class Board {
         Board();
 
         /**
+         * DESTRUCTOR
+        */
+        ~Board();
+
+        /**
          * Returns the piece at coordinates (x,y) or nullptr if no piece is present
          * @return BasePiece* or nullptr
         */
@@ -76,4 +81,12 @@ class Board {
          * @return
         */
         void movePiece(Move& move);
+
+        /**
+         * @param Move - Move available
+         * @return
+        */
+        void addWhiteMove(Move& move) {
+            
+        }
 };
