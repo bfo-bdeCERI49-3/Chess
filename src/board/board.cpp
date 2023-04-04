@@ -36,6 +36,16 @@ Board::Board() {
 
     for(int i = 0; i < 8; i++)
         this->grid[1][i] = new Pawn(White, 6, i, PAWN);
+
+    /**
+     * Copy all created pieces into the pieces array
+    */
+    for(size_t x = 0; x < 8; x++) {
+        for(size_t y = 0; y < 8; y++) {
+            if(this->grid[x][y] != nullptr)
+                this->pieces[y * 8 + x] = this->grid[x][y];
+        }
+    }
 };
 
 /**

@@ -81,12 +81,4 @@ class Board {
          * @return
         */
         void movePiece(Move& move);
-
-        /**
-         * @param Move - Move available
-         * @return
-        */
-        void addWhiteMove(Move& move) {
-            
-        }
 };
