@@ -8,8 +8,8 @@ class Bishop : public BasePiece {
         /**
          * Constructors
         */
-        Bishop(Color&, Coordinates&, PieceType&);
-        Bishop(Color&, unsigned char, unsigned char, PieceType&);
+        Bishop(Color, Coordinates&, PieceType);
+        Bishop(Color, size_t, size_t, PieceType);
 
         /**
          * Evaluates possible movements for said piece and stores it in the available moves for said team

@@ -8,8 +8,8 @@ class King : public BasePiece {
         /**
          * Constructors
         */
-        King(Color&, Coordinates&, PieceType&);
-        King(Color&, unsigned char, unsigned char, PieceType&);
+        King(Color, Coordinates&, PieceType);
+        King(Color, size_t, size_t, PieceType);
 
         /**
          * Evaluates possible movements for said piece and stores it in the available moves for said team

@@ -8,8 +8,8 @@ class Pawn : public BasePiece {
         /**
          * Constructors
         */
-        Pawn(Color&, Coordinates&, PieceType&);
-        Pawn(Color&, unsigned char, unsigned char, PieceType&);
+        Pawn(Color, Coordinates&, PieceType);
+        Pawn(Color, size_t, size_t, PieceType);
 
         /**
          * Evaluates possible movements for said piece and stores it in the available moves for said team
