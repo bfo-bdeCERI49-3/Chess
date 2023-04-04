@@ -46,6 +46,17 @@ Board::Board() {
                 this->pieces[y * 8 + x] = this->grid[x][y];
         }
     }
+
+    /**
+     * Initializes arrays for moves
+    */
+    this->whiteAvailableMoves.size = 10;
+    this->whiteAvailableMoves.elements = 0;
+    *(this->whiteAvailableMoves.list) = new Move[10];
+
+    this->blackAvailableMoves.size = 10;
+    this->blackAvailableMoves.elements = 0;
+    *(this->blackAvailableMoves.list) = new Move[10];
 };
 
 /**
@@ -57,3 +68,9 @@ Board::~Board() {
     delete[] whiteAvailableMoves.list;
     delete[] blackAvailableMoves.list;
 };
+
+/**
+ * Registers an available move for white player
+*/
+void Board::addWhiteMove(Move &move) {
+}
