@@ -13,6 +13,16 @@ class Move {
         Coordinates destinationCoordinates; // Ending position of the move
 };
 
+/**
+ * Class representing a list
+*/
+template<class T>
+struct List {
+    T* list;            // Actual list of pointers
+    size_t size;        // Size of array
+    size_t elements;    // Elements in array
+};
+
 class Board {
     private:
         /**
@@ -23,12 +33,12 @@ class Board {
         /**
          * Grid representing all available moves for White player
         */
-        Move* whiteAvailableMoves { nullptr };
+        List<Move*> whiteAvailableMoves { nullptr };
 
         /**
          * Grid representing all available moves for Black player
         */
-        Move* blackAvailableMoves { nullptr };
+        List<Move*> blackAvailableMoves { nullptr };
 
         /**
          * 0 if white player's turn, 1 if black player's turn
@@ -61,13 +71,13 @@ class Board {
          * Get all of White player's available moves
          * @return Move*
         */
-        inline Move* getWhiteAvailableMoves() { return this->whiteAvailableMoves; };
+        inline List<Move*> getWhiteAvailableMoves() { return this->whiteAvailableMoves; };
 
         /**
          * Get all of Black player's available moves
          * @return Move*
         */
-        inline Move* getBlackAvailableMoves() { return this->blackAvailableMoves; };
+        inline List<Move*> getBlackAvailableMoves() { return this->blackAvailableMoves; };
 
         /**
          * Returns which player's turn it is - 1 if black's turn, 0 if white's turn
@@ -81,4 +91,10 @@ class Board {
          * @return
         */
         void movePiece(Move& move);
+
+        /**
+         * @param Move - Move available
+         * @return
+        */
+        void addWhiteMove(Move& move);
 };

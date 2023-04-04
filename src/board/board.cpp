@@ -53,8 +53,7 @@ Board::Board() {
 */
 Board::~Board() {
     delete[] pieces;
-    delete[] whiteAvailableMoves;
     delete[] grid;
-    delete[] blackAvailableMoves;
-    delete[] whiteAvailableMoves;
+    delete[] whiteAvailableMoves.list;
+    delete[] blackAvailableMoves.list;
 };
