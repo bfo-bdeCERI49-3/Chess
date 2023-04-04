@@ -1,5 +1,7 @@
 #include "./board.hpp"
 #include "../pieces/BasePiece.hpp"
+#include "stdlib.h"
+#include <cmath>
 
 Board::Board() {
 
@@ -71,6 +73,48 @@ Board::~Board() {
 
 /**
  * Registers an available move for white player
+ * @return void
 */
-void Board::addWhiteMove(Move &move) {
+void Board::addWhiteMove(Move* move) {
+
+    List<Move*> moves = this->whiteAvailableMoves;
+
+    /**
+     * If more elements in the array than the size of the array return error code
+     * 1, 2, 126 – 165 and 255 have special meanings therefore we start from 1000
+    */
+    if(moves.elements > moves.size)
+        exit(1000);
+
+    /**
+     * Array not full
+    */
+    if(moves.elements < moves.size)
+        moves.list[moves.elements++] = move;
+
+    /**
+     * Array full
+    */
+    if(moves.elements == moves.size) {
+        size_t newSize = moves.size * floor(sqrt(moves.size));
+
+        // We create a new pointer array
+        Move* _ = new Move[newSize];
+
+        // We replace the values
+        for(size_t x = 0; x < moves.size; x++)
+            _[x] = *(moves.list)[x];
+        
+        // We set the new size
+        moves.size = newSize;
+
+        // We delete the old array
+        delete[] *(moves.list);
+
+        // We replace the old array by the new array
+        *(moves.list) = _;
+
+        // We set the new value
+        moves.list[moves.elements++] = move;
+    }
 }
