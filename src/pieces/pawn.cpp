@@ -1,4 +1,4 @@
-#include "knight.hpp"
+#include "pawn.hpp"
 
 /**
  * Pawn's constructors
