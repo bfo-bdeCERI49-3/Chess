@@ -8,7 +8,7 @@ class King : public BasePiece {
         /**
          * Constructors
         */
-        King(Color&, Coordinates&, PieceType);
+        King(Color&, Coordinates&, PieceType&);
         King(Color&, unsigned char, unsigned char);
 
         /**
