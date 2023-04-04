@@ -9,7 +9,7 @@ class Rook : public BasePiece {
          * Constructors
         */
         Rook(Color&, Coordinates&, PieceType&);
-        Rook(Color&, unsigned char, unsigned char);
+        Rook(Color&, unsigned char, unsigned char, PieceType&);
 
         /**
          * Evaluates possible movements for said piece and stores it in the available moves for said team

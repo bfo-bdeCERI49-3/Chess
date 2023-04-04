@@ -9,7 +9,7 @@ class Knight : public BasePiece {
          * Constructors
         */
         Knight(Color&, Coordinates&, PieceType&);
-        Knight(Color&, unsigned char, unsigned char);
+        Knight(Color&, unsigned char, unsigned char, PieceType&);
 
         /**
          * Evaluates possible movements for said piece and stores it in the available moves for said team

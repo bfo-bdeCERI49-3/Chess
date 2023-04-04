@@ -3,6 +3,13 @@
 #include <stddef.h>
 #include "../board/board.hpp"
 
+#include "king.hpp"
+#include "bishop.hpp"
+#include "knight.hpp"
+#include "pawn.hpp"
+#include "queen.hpp"
+#include "rook.hpp"
+
 class Board;
 
 enum Color {
@@ -51,7 +58,7 @@ class BasePiece {
         */
         inline PieceType getType() { return this->type; };
 
-    private:
+    protected:
         Color color             { White };  // Piece's color
         bool taken              { false };  // True is piece has been taken by enemy
         Coordinates coordinates { 0, 0 };   // Coordinates on the board
