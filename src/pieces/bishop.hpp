@@ -8,7 +8,7 @@ class Bishop : public BasePiece {
         /**
          * Constructors
         */
-        Bishop(Color&, Coordinates&);
+        Bishop(Color&, Coordinates&, PieceType);
         Bishop(Color&, unsigned char, unsigned char);
 
         /**

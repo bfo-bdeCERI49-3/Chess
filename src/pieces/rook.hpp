@@ -8,7 +8,7 @@ class Rook : public BasePiece {
         /**
          * Constructors
         */
-        Rook(Color&, Coordinates&);
+        Rook(Color&, Coordinates&, PieceType&);
         Rook(Color&, unsigned char, unsigned char);
 
         /**

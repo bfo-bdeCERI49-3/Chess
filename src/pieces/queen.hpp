@@ -8,7 +8,7 @@ class Queen : public BasePiece {
         /**
          * Constructors
         */
-        Queen(Color&, Coordinates&);
+        Queen(Color&, Coordinates&, PieceType&);
         Queen(Color&, unsigned char, unsigned char);
 
         /**

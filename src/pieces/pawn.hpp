@@ -8,7 +8,7 @@ class Pawn : public BasePiece {
         /**
          * Constructors
         */
-        Pawn(Color&, Coordinates&);
+        Pawn(Color&, Coordinates&, PieceType&);
         Pawn(Color&, unsigned char, unsigned char);
 
         /**

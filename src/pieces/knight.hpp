@@ -8,7 +8,7 @@ class Knight : public BasePiece {
         /**
          * Constructors
         */
-        Knight(Color&, Coordinates&);
+        Knight(Color&, Coordinates&, PieceType&);
         Knight(Color&, unsigned char, unsigned char);
 
         /**
