@@ -16,4 +16,13 @@ class Pawn : public BasePiece {
          * @return void
         */
         void evaluateMovements(Board&);
+
+        /**
+         * Returns how many movements a pawn did do
+         * @return unsigned char
+        */
+       inline unsigned char getMovementCounter() { this->movementCounter; };
+
+    private:
+        unsigned char movementCounter { 0 };
 };
