@@ -96,5 +96,5 @@ class Board {
          * @param Move - Move available
          * @return
         */
-        void addWhiteMove(Move* move);
+        void addMove(Move* move, Color color);
 };

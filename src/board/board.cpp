@@ -75,9 +75,14 @@ Board::~Board() {
  * Registers an available move for white player
  * @return void
 */
-void Board::addWhiteMove(Move* move) {
+void Board::addMove(Move* move, Color color) {
 
-    List<Move*> moves = this->whiteAvailableMoves;
+    List<Move*> moves;
+
+    if(color == Black)
+        moves = this->blackAvailableMoves;
+    if(color == White)
+        moves = this->whiteAvailableMoves;
 
     /**
      * If more elements in the array than the size of the array return error code
@@ -117,4 +122,4 @@ void Board::addWhiteMove(Move* move) {
         // We set the new value
         moves.list[moves.elements++] = *move;
     }
-}
+};
