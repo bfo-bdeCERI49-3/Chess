@@ -15,14 +15,5 @@ class Pawn : public BasePiece {
          * Evaluates possible movements for said piece and stores it in the available moves for said team
          * @return void
         */
-        void evaluateMovements(Board&);
-
-        /**
-         * Returns how many movements a pawn did do
-         * @return unsigned char
-        */
-       inline unsigned char getMovementCounter() { this->movementCounter; };
-
-    private:
-        unsigned char movementCounter { 0 };
+        virtual void evaluateMovements(Board&);
 };

@@ -58,6 +58,18 @@ class BasePiece {
         */
         inline PieceType getType() { return this->type; };
 
+        /**
+         * Evaluates possible movements for said piece and stores it in the available moves for said team
+         * @return void
+        */
+        void evaluateMovements(Board&);
+
+        /**
+         * Returns how many movements a pawn did do
+         * @return unsigned char
+        */
+       inline unsigned char getMovementCounter() { this->movementCounter; };
+
     protected:
         /**
          * Creates a move for a piece and returns a pointer to said move variable
@@ -69,4 +81,5 @@ class BasePiece {
         bool taken              { false };  // True is piece has been taken by enemy
         Coordinates coordinates { 0, 0 };   // Coordinates on the board
         PieceType type;                     // Type of current piece
+        unsigned char movementCounter { 0 };// Movement counter for the piece
 };
