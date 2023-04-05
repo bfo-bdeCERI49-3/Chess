@@ -18,6 +18,13 @@ Pawn::Pawn(Color color, size_t x, size_t y, PieceType type) {
     this->type = type;
 };
 
+
+
+/**
+ * ! UNFINISHED FUNCTION
+ * TODO : HANDLE PIECE BEING EATEN
+ * TODO : HANDLE PIECES BEING IN DIAGONAL OF PAWN
+*/
 void Pawn::evaluateMovements(Board& board) {
     /**
      * Get current pawn coordinates
@@ -29,9 +36,9 @@ void Pawn::evaluateMovements(Board& board) {
     */
     if(color == White) {
         /**
-         * Pawn's first move
+         * Pawn's first move & nothing in front
         */
-        if(this->movementCounter <= 0) {
+        if(this->movementCounter <= 0 && board.get(this->coordinates.x - 2, this->coordinates.y) != nullptr) {
             /**
              * Add it as a possibility
             */
@@ -106,13 +113,13 @@ void Pawn::evaluateMovements(Board& board) {
     }
 
     /**
-     * if pawn is black we handle logic for white pawn
+     * if pawn is black we handle logic for black pawn
     */
     if(color == White) {
         /**
-         * Pawn's first move
+         * Pawn's first move & nothing in front
         */
-        if(this->movementCounter <= 0) {
+        if(this->movementCounter <= 0 && board.get(this->coordinates.x + 2, this->coordinates.y) == nullptr) {
             /**
              * Add it as a possibility
             */
@@ -153,11 +160,11 @@ void Pawn::evaluateMovements(Board& board) {
                     /**
                      * Finally, if nothing behind the enemy pawn
                     */
-                    if(board.get(this->coordinates.x - 1, this->coordinates.y - 1) == nullptr) {
+                    if(board.get(this->coordinates.x + 1, this->coordinates.y - 1) == nullptr) {
                         board.addMove(this->createMove(originCoordinates, {
-                            .x = this->coordinates.x - 1,
+                            .x = this->coordinates.x + 1,
                             .y = this->coordinates.y - 1
-                        }), White);
+                        }), Black);
                     }
                 }
             }
@@ -167,7 +174,7 @@ void Pawn::evaluateMovements(Board& board) {
          * if our white pawn is at X = 3, We check if the pawn is at our right and is an ennemy piece and not on the edge of the board                                               
         */
         if(originCoordinates.y + 1 <= 7) {
-            if(this->coordinates.x == 3 && board.get(this->coordinates.x, this->coordinates.y + 1)->getType() == PAWN && (board.get(this->coordinates.x, this->coordinates.y + 1)->getColor() == Black)) {
+            if(this->coordinates.x == 4 && board.get(this->coordinates.x, this->coordinates.y + 1)->getType() == PAWN && (board.get(this->coordinates.x, this->coordinates.y + 1)->getColor() == Black)) {
                 /**
                  * We check if it's the pawn's first move
                 */
@@ -175,11 +182,11 @@ void Pawn::evaluateMovements(Board& board) {
                     /**
                      * Finally, if nothing behind the enemy pawn
                     */
-                    if(board.get(this->coordinates.x - 1, this->coordinates.y + 1) == nullptr) {
+                    if(board.get(this->coordinates.x + 1, this->coordinates.y + 1) == nullptr) {
                         board.addMove(this->createMove(originCoordinates, {
-                            .x = this->coordinates.x - 1,
+                            .x = this->coordinates.x + 1,
                             .y = this->coordinates.y + 1
-                        }), White);
+                        }), Black);
                     }
                 }
             }
