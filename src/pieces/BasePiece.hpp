@@ -59,6 +59,12 @@ class BasePiece {
         inline PieceType getType() { return this->type; };
 
     protected:
+        /**
+         * Creates a move for a piece and returns a pointer to said move variable
+         * @return Move*
+        */
+        Move* createMove(Coordinates origin, Coordinates destination);
+
         Color color             { White };  // Piece's color
         bool taken              { false };  // True is piece has been taken by enemy
         Coordinates coordinates { 0, 0 };   // Coordinates on the board
