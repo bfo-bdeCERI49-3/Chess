@@ -18,7 +18,7 @@ class Move {
 */
 template<class T>
 struct List {
-    T* list;            // Actual list of pointers
+    T list;            // Actual list of pointers
     size_t size;        // Size of array
     size_t elements;    // Elements in array
 };

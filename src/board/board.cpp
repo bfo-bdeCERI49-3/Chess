@@ -54,11 +54,11 @@ Board::Board() {
     */
     this->whiteAvailableMoves.size = 10;
     this->whiteAvailableMoves.elements = 0;
-    *(this->whiteAvailableMoves.list) = new Move[10];
+    this->whiteAvailableMoves.list = new Move[10];
 
     this->blackAvailableMoves.size = 10;
     this->blackAvailableMoves.elements = 0;
-    *(this->blackAvailableMoves.list) = new Move[10];
+    this->blackAvailableMoves.list = new Move[10];
 };
 
 /**
@@ -90,7 +90,7 @@ void Board::addWhiteMove(Move* move) {
      * Array not full
     */
     if(moves.elements < moves.size)
-        moves.list[moves.elements++] = move;
+        moves.list[moves.elements++] = *move;
 
     /**
      * Array full
@@ -103,18 +103,18 @@ void Board::addWhiteMove(Move* move) {
 
         // We replace the values
         for(size_t x = 0; x < moves.size; x++)
-            _[x] = *(moves.list)[x];
+            _[x] = moves.list[x];
         
         // We set the new size
         moves.size = newSize;
 
         // We delete the old array
-        delete[] *(moves.list);
+        delete[] moves.list;
 
         // We replace the old array by the new array
-        *(moves.list) = _;
+        moves.list = _;
 
         // We set the new value
-        moves.list[moves.elements++] = move;
+        moves.list[moves.elements++] = *move;
     }
 }
