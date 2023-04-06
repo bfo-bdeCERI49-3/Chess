@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Piece.hpp"
+#include "../include/core/List.hpp"
 
 enum Color;
 enum PieceType;
@@ -13,16 +14,6 @@ class Move {
         Coordinates destinationCoordinates; // Ending position of the move
 };
 
-/**
- * Class representing a list
-*/
-template<class T>
-struct List {
-    T list;            // Actual list of pointers
-    size_t size;        // Size of array
-    size_t elements;    // Elements in array
-};
-
 class Board {
     private:
         /**
@@ -33,12 +24,12 @@ class Board {
         /**
          * Grid representing all available moves for White player
         */
-        List<Move*> whiteAvailableMoves { nullptr };
+        List<Move*> whiteAvailableMoves;
 
         /**
          * Grid representing all available moves for Black player
         */
-        List<Move*> blackAvailableMoves { nullptr };
+        List<Move*> blackAvailableMoves;
 
         /**
          * 0 if white player's turn, 1 if black player's turn

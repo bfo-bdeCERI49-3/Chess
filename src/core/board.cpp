@@ -52,13 +52,8 @@ Board::Board() {
     /**
      * Initializes arrays for moves
     */
-    this->whiteAvailableMoves.size = 10;
-    this->whiteAvailableMoves.elements = 0;
-    this->whiteAvailableMoves.list = new Move[10];
-
-    this->blackAvailableMoves.size = 10;
-    this->blackAvailableMoves.elements = 0;
-    this->blackAvailableMoves.list = new Move[10];
+    this->whiteAvailableMoves = List<Move*>();
+    this->blackAvailableMoves = List<Move*>();
 };
 
 /**
@@ -67,8 +62,6 @@ Board::Board() {
 Board::~Board() {
     delete[] pieces;
     delete[] grid;
-    delete[] whiteAvailableMoves.list;
-    delete[] blackAvailableMoves.list;
 };
 
 /**
@@ -76,50 +69,6 @@ Board::~Board() {
  * @return void
 */
 void Board::addMove(Move* move, Color color) {
-
-    List<Move*> moves;
-
-    if(color == Black)
-        moves = this->blackAvailableMoves;
-    if(color == White)
-        moves = this->whiteAvailableMoves;
-
-    /**
-     * If more elements in the array than the size of the array return error code
-     * 1, 2, 126 – 165 and 255 have special meanings therefore we start from 1000
-    */
-    if(moves.elements > moves.size)
-        exit(1000);
-
-    /**
-     * Array not full
-    */
-    if(moves.elements < moves.size)
-        moves.list[moves.elements++] = *move;
-
-    /**
-     * Array full
-    */
-    if(moves.elements == moves.size) {
-        size_t newSize = moves.size * floor(sqrt(moves.size));
-
-        // We create a new pointer array
-        Move* _ = new Move[newSize];
-
-        // We replace the values
-        for(size_t x = 0; x < moves.size; x++)
-            _[x] = moves.list[x];
-        
-        // We set the new size
-        moves.size = newSize;
-
-        // We delete the old array
-        delete[] moves.list;
-
-        // We replace the old array by the new array
-        moves.list = _;
-
-        // We set the new value
-        moves.list[moves.elements++] = *move;
-    };
+    List<Move*> moves = (color == Black) ? this->blackAvailableMoves : moves = this->whiteAvailableMoves;
+    moves.add(move);
 };
