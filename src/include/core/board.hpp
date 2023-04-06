@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../pieces/BasePiece.hpp"
+#include "Piece.hpp"
 
 enum Color;
 enum PieceType;
@@ -28,7 +28,7 @@ class Board {
         /**
          * 2D Grid representing the checker
         */
-        BasePiece* grid[8][8] { nullptr };
+        Piece* grid[8][8] { nullptr };
 
         /**
          * Grid representing all available moves for White player
@@ -48,7 +48,7 @@ class Board {
         /**
          * Pieces on the Checker
         */
-        BasePiece* pieces[32] { nullptr };
+        Piece* pieces[32] { nullptr };
 
     public:
         /**
@@ -65,7 +65,7 @@ class Board {
          * Returns the piece at coordinates (x,y) or nullptr if no piece is present
          * @return BasePiece* or nullptr
         */
-        inline BasePiece* get(size_t x, size_t y) { return this->grid[x][y]; };
+        inline Piece* get(size_t x, size_t y) { return this->grid[x][y]; };
 
         /**
          * Get all of White player's available moves

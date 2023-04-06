@@ -1,14 +1,7 @@
 #pragma once
 
 #include <stddef.h>
-#include "../board/board.hpp"
-
-#include "king.hpp"
-#include "bishop.hpp"
-#include "knight.hpp"
-#include "pawn.hpp"
-#include "queen.hpp"
-#include "rook.hpp"
+#include "board.hpp"
 
 class Board;
 
@@ -31,9 +24,16 @@ struct Coordinates {
     size_t y;
 };
 
-class BasePiece {
+class Piece {
 
     public:
+
+        /**
+         * CONSTRUCTOR
+        */
+        Piece(Color, Coordinates, PieceType);
+        Piece(Color, size_t, size_t, PieceType);
+        
         /**
          * Get color of piece
          * @return Color
@@ -70,16 +70,23 @@ class BasePiece {
         */
        inline unsigned char getMovementCounter() { this->movementCounter; };
 
-    protected:
         /**
          * Creates a move for a piece and returns a pointer to said move variable
          * @return Move*
         */
         Move* createMove(Coordinates origin, Coordinates destination);
 
+        /**
+         * Returns value of pinned variable
+         * @return bool
+        */
+        inline bool isPinned() { return this->pinned; };
+        
+    private:
         Color color             { White };  // Piece's color
         bool taken              { false };  // True is piece has been taken by enemy
         Coordinates coordinates { 0, 0 };   // Coordinates on the board
         PieceType type;                     // Type of current piece
         unsigned char movementCounter { 0 };// Movement counter for the piece
+        bool pinned { false };              // Piece pinned, cannot move
 };
